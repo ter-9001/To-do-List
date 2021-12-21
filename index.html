@@ -16,7 +16,8 @@
         .tarefa
         {
             color: rgb(189, 186, 186);
-
+            
+            
         }
 
         .title
@@ -24,7 +25,15 @@
             color: rgb(189, 186, 186);
             font-size: 40px;
             margin-bottom: 7px;
+            font-style: oblique;
+            text-shadow: 6px 2px black
 
+        }
+
+
+        #tarefa
+        {
+            border-radius: 10%
         }
 
 
@@ -42,7 +51,7 @@
     ">
 
                         
-                <div style="position: absolute; top: 40%"
+                <div style="position: absolute; top: 20%"
                 >
 
                     <p class="title">
@@ -52,24 +61,25 @@
             
                     <button onclick="gerarTarefa()">
                         Gerar tarefa
-                </button>
+                    </button>
             
+                </div>
+
+
+                
+                <div id="tarefas" 
+                style="position: absolute; top: 40%">
+
+
+
                 </div>
 
 
 
 
-
-
     </div>
     
     
-    <div id="tarefas">
-
-
-
-    </div>
-
 
 
 </body>

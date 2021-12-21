@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do List</title>
+    <style>
+
+        body
+        {
+            background-color: rgb(31, 31, 31);
+        }
+
+
+        .tarefa
+        {
+            color: rgb(189, 186, 186);
+
+        }
+
+
+
+
+
+    </style>
+
+
+
+
+</head>
+<body>
+    
+    <button onclick="gerarTarefa()">
+         Gerar tarefa
+    </button>
+
+    <div id="tarefas">
+
+
+
+    </div>
+
+
+<script>
+
+var tarefas = document.getElementById("tarefas");
+
+    function gerarTarefa()
+    {
+        var novop = document.createElement("p");
+        var tarefa = document.createTextNode("bebe fofo");
+        
+        var checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        novop.appendChild(checkbox);
+        novop.appendChild(tarefa);
+
+
+
+        novop.classList.add("tarefa")
+        tarefas.appendChild(novop);
+
+        ouvindoCheckBox();
+
+    }
+
+
+function ouvindoCheckBox () {
+
+
+    var chs = document.getElementsByTagName("input") 
+ 
+        for(var i =0 ; i < chs.length ; i++)
+        {
+
+            chs[i].addEventListener(
+                    "change", function(){
+                        
+                        if(this.checked == true)
+                        {
+                            this.closest("p").style.textDecoration = "line-through"
+                        }
+                        else
+                        {
+                            this.closest("p").style.textDecoration = "none"
+                        }
+
+
+
+
+
+                    }
+            )
+
+        }
+
+
+
+
+}
+
+
+ 
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

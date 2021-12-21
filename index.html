@@ -19,6 +19,13 @@
 
         }
 
+        .title
+        {
+            color: rgb(189, 186, 186);
+            font-size: 40px;
+            margin-bottom: 7px;
+
+        }
 
 
 
@@ -30,11 +37,33 @@
 
 </head>
 <body>
-    
-    <button onclick="gerarTarefa()">
-         Gerar tarefa
-    </button>
 
+    <div style= "display: flex; justify-content: center;
+    ">
+
+                        
+                <div style="position: absolute; top: 40%"
+                >
+
+                    <p class="title">
+                        To do List
+                    </p>
+                    <input type="text" id="tarefa" />
+            
+                    <button onclick="gerarTarefa()">
+                        Gerar tarefa
+                </button>
+            
+                </div>
+
+
+
+
+
+
+    </div>
+    
+    
     <div id="tarefas">
 
 
@@ -42,75 +71,100 @@
     </div>
 
 
+
+</body>
+
 <script>
 
-var tarefas = document.getElementById("tarefas");
+    var tarefas = document.getElementById("tarefas");
+    
+        function gerarTarefa()
+        {
 
-    function gerarTarefa()
-    {
-        var novop = document.createElement("p");
-        var tarefa = document.createTextNode("bebe fofo");
+            var texto = document.getElementById("tarefa").value;
+            var novop = document.createElement("p");
+            
+            if(texto.length > 0)
+                var tarefa = document.createTextNode(texto);
+            
+            var checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            novop.appendChild(checkbox);
+            novop.appendChild(tarefa);
+    
+    
+    
+            novop.classList.add("tarefa")
+            tarefas.appendChild(novop);
+    
+            ouvindoCheckBox();
+            clearTexto();
+        }
+    
+    
+
+
+
+    function ouvindoCheckBox () {
+    
+    
+        var chs = document.querySelectorAll('input[type="checkbox"]');
         
-        var checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        novop.appendChild(checkbox);
-        novop.appendChild(tarefa);
-
-
-
-        novop.classList.add("tarefa")
-        tarefas.appendChild(novop);
-
-        ouvindoCheckBox();
-
+        
+     
+            for(var i =0 ; i < chs.length ; i++)
+            {
+    
+                chs[i].addEventListener(
+                        "change", function(){
+                            
+                            if(this.checked == true)
+                            {
+                                this.closest("p").style.textDecoration = "line-through"
+                            }
+                            else
+                            {
+                                this.closest("p").style.textDecoration = "none"
+                            }
+    
+    
+    
+    
+    
+                            }
+                    )
+                
+    
+            }
+    
+    
+    
+    
     }
 
 
-function ouvindoCheckBox () {
-
-
-    var chs = document.getElementsByTagName("input") 
- 
-        for(var i =0 ; i < chs.length ; i++)
-        {
-
-            chs[i].addEventListener(
-                    "change", function(){
-                        
-                        if(this.checked == true)
-                        {
-                            this.closest("p").style.textDecoration = "line-through"
-                        }
-                        else
-                        {
-                            this.closest("p").style.textDecoration = "none"
-                        }
 
 
 
 
-
-                    }
-            )
-
-        }
-
-
-
-
-}
-
-
- 
-
-
-
-
-
-
-
-</script>
+    function clearTexto()
+    {
+        document.getElementById("tarefa").value= null;
+    }
+    
+    
+     
+    
+    
+    
+    
+    
+    
+    
+    </script>
+    
+    
 
 
-</body>
+
 </html>
